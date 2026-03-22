@@ -268,5 +268,3 @@ rm -r dir1
 *Note:* `rm` is permanent (not like a Recycle Bin).
 
 ---
-
-Do you want me to do that?
