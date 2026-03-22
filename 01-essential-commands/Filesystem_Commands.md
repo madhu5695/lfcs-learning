@@ -1,106 +1,142 @@
-# LFCS Day 2 Learning: Filesystem Commands
-
-This document covers core Linux filesystem commands essential for LFCS exam preparation.
-
 ---
 
-## 1. `ls`  
-- Lists the contents of the directory  
+# Day 2: LFCS - Filesystem Commands
 
-**Syntax:**  
+## 1. `ls`
+
+Lists the contents of the directory.
+
+**Syntax:**
+
 ```bash
 ls [options] <directory-path>
+```
 
-Options:
+**Options:**
 
--l : Long listing format (detailed file info)
--a : Show all files including hidden (. files)
--h : Human-readable sizes (KB, MB, GB)
--t : Sort by modification time (newest first)
--r : Reverse sorting order
--R : List directories recursively
--d : Show directory itself, not contents
--S : Sort files by size (largest first)
--i : Display inode number of files
---color : Display files with colors by type
+* `-l` : Long listing format (detailed file info)
+* `-a` : Show all files including hidden (`.` files)
+* `-h` : Show sizes in human-readable format (KB, MB, GB)
+* `-t` : Sort files by modification time (newest first)
+* `-r` : Reverse the sorting order
+* `-R` : List directories recursively
+* `-d` : Show directory itself, not its contents
+* `-S` : Sort files by size (largest first)
+* `-i` : Display inode number of files
+* `--color` : Display files with colors by type
+* `--` : End of options
 
-Combined options:
+**Combined options:**
 
--lh : Long listing + human-readable sizes
--la : Long listing + include hidden files
--ltr : Long listing + sort by time + reverse (oldest first)
--lah : Long + hidden + human-readable
+* `-lh` : Long listing + human-readable sizes
+* `-la` : Long listing + include hidden files
+* `-ltr` : Long listing + sort by time + reverse (oldest first)
+* `-lah` : Long + hidden + human-readable
 
-Examples:
+**Examples:**
 
+```bash
 ls -a
 ls -lart /var/logs
 ls --color=auto -l
-2. pwd
-Prints the current working directory
+```
 
-Syntax:
+---
 
+## 2. `pwd`
+
+Prints the current working directory.
+
+**Syntax:**
+
+```bash
 pwd [options]
+```
 
-Options:
+**Options:**
 
--L : Shows logical path (with symlinks)
--P : Shows actual physical path
+* `-L` : Shows logical path (with symlinks)
+* `-P` : Shows actual physical path
 
-Examples:
+**Examples:**
 
+```bash
 pwd -L
 pwd -P
+```
 
-Environment variable: $PWD
+**Environment variable:** `$PWD`
 
-3. cd
-Navigate the filesystem (must have execute permission on directories)
+---
 
-Syntax:
+## 3. `cd`
 
+Navigate the filesystem. Requires execute (`x`) permission on directories.
+
+**Syntax:**
+
+```bash
 cd [OPTION] [DIRECTORY]
+```
 
-Options:
+**Options:**
 
--L : Shows logical path (with symlinks)
--P : Shows actual physical path
--e : Error handling
+* `-L` : Shows logical path (with symlinks)
+* `-P` : Shows actual physical path
+* `-e` : Error handling
 
-Examples:
+**Examples:**
 
+```bash
 cd /home/bob
 cd ../pipe
 cd -P /var
+```
 
-Common Usage:
+**Common Usage:**
 
-cd [path] → Navigate (absolute or relative)
-cd or cd ~ → Go to home directory
-cd .. → Move up one level
-cd - → Return to previous directory
-cd / → Go to root directory
-cd ~username → Go to another user’s home directory
-4. touch
-Create empty files or update timestamps
+* `cd [path]` → Navigate to absolute (`/var/log`) or relative (`Documents`) path
+* `cd` or `cd ~` → Go to home directory
+* `cd ..` → Move up one level
+* `cd -` → Return to previous directory
+* `cd /` → Go to root directory
+* `cd ~username` → Go to another user’s home directory
 
-Syntax:
+---
 
+## 4. `touch`
+
+Create empty files or update file timestamps.
+
+**Syntax:**
+
+```bash
 touch [options] [file_name...]
+```
 
-Options:
+**Options:**
 
--a : Change access time only
--m : Change modification time only
--c : Do not create new file
--r : Use reference file’s timestamp
--t : Set a custom timestamp
+* `-a` : Change access time only
+* `-m` : Change modification time only
+* `-c` : Do not create new file
+* `-r` : Use reference file’s timestamp
+* `-t` : Set a custom timestamp
 
-Timestamp format: [[CC]YY]MMDDhhmm[.ss]
+**Timestamp format:**
 
-Examples:
+```
+[[CC]YY]MMDDhhmm[.ss]
+```
 
+* `CCYY` : Year
+* `MM` : Month
+* `DD` : Day
+* `hhmm` : Hours and Minutes
+* `.ss` : Optional Seconds
+
+**Examples:**
+
+```bash
 touch file1.txt
 touch gfg1.txt gfg2.txt gfg3.txt
 touch -a file.txt
@@ -108,96 +144,132 @@ touch -m file.txt
 touch -c oldfile.txt
 touch -r reference.txt target.txt
 touch -t 202510231230.30 file.txt
-5. mkdir
-Create one or more directories
+```
 
-Syntax:
+---
 
+## 5. `mkdir`
+
+Create one or more directories.
+
+**Syntax:**
+
+```bash
 mkdir [OPTION] [DIRECTORY-NAME]
+```
 
-Options:
+**Options:**
 
--p : Creates parent directories as needed; ignores existing directories
--m : Sets directory permissions
--v : Displays a message for each directory created
--Z : Sets SELinux security context
+* `-p` : Create parent directories as needed; ignore existing
+* `-m` : Set specific directory permissions
+* `-v` : Show message for each directory created
+* `-Z` : Set SELinux security context
 
-Examples:
+**Examples:**
 
+```bash
 mkdir myfolder
 mkdir dir1 dir2 dir3
 mkdir -p parent/child/grandchild
 mkdir -v dir1
 mkdir -m 755 mydir
+```
 
-Note: mv cannot move across filesystems without physically copying and deleting
+*Note:* `mv` cannot move across filesystems without physically copying and deleting.
 
-6. cp
-Copy files and directories
+---
 
-Syntax:
+## 6. `cp`
 
+Copy files and directories.
+
+**Syntax:**
+
+```bash
 cp [options] <source> <destination>
+```
 
-Options:
+**Options:**
 
--r : Recursive
--i : Prompt before overwrite
--p : Preserve file attributes (permissions, ownership, timestamps)
--a : Archive (best for full copy)
--v : Verbose output
--n : Prevent overwrite
--u : Copy if source is newer
--f : Force overwrite
+* `-r` : Recursive
+* `-i` : Prompt before overwriting
+* `-p` : Preserve attributes (permissions, ownership, timestamps)
+* `-a` : Archive (full copy)
+* `-v` : Show each file as copied
+* `-n` : Do not overwrite existing files
+* `-u` : Copy if source is newer or destination missing
+* `-f` : Overwrite without asking
 
-Examples:
+**Examples:**
 
+```bash
 cp file1.txt file2.txt
 cp file1.txt /tmp/
 cp file1 file2 file3 /tmp/
 cp -r dir1 dir2
 cp -p file1 /tmp/
-7. mv
-Move or rename files/directories
+```
 
-Syntax:
+---
 
+## 7. `mv`
+
+Move or rename files/directories.
+
+**Syntax:**
+
+```bash
 mv [options] <source> <destination>
+```
 
-Options:
+**Options:**
 
--i : Prompt before overwrite
--f : Force overwrite
--n : No overwrite
--u : Move if source is newer or destination missing
--v : Verbose
--b : Backup destination file before overwrite
+* `-i` : Prompt before overwriting
+* `-f` : Overwrite without prompting
+* `-n` : Do not overwrite existing files
+* `-u` : Move if source is newer or destination missing
+* `-v` : Show each file moved
+* `-b` : Backup destination before overwriting
 
-Examples:
+**Examples:**
 
+```bash
 mv -i file1 file2
 mv -f file1 file2
 mv -v file1 /tmp/
-8. rm
-Delete files or directories
+```
 
-Syntax:
+---
 
+## 8. `rm`
+
+Delete files or directories permanently.
+
+**Syntax:**
+
+```bash
 rm [options] <file/directory>
+```
 
-Options:
+**Options:**
 
--i : Prompt before each deletion
--I : Prompt once before deleting >3 files or recursively
--r : Delete directories recursively
--f : Force delete, ignore nonexistent files
--v : Verbose
--d : Remove empty directories
+* `-i` : Prompt before every deletion
+* `-I` : Prompt once for >3 files or recursive deletion
+* `-r` : Delete directories recursively
+* `-f` : Force deletion, ignore non-existent files
+* `-v` : Show each file as removed
+* `-d` : Remove empty directories (like `rmdir`)
 
-Examples:
+**Examples:**
 
+```bash
 rm file1.txt
 rm file1 file2 file3
 rm -r dir1
+```
 
-Note: rm is permanent; files are not moved to a “Recycle Bin”.
+*Note:* `rm` is permanent (not like a Recycle Bin).
+
+---
+
+Do you want me to generate the actual file for download?
