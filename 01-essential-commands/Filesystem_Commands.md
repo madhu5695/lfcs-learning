@@ -24,7 +24,7 @@ ls [options] <directory-path>
 * `-S` : Sort files by size (largest first)
 * `-i` : Display inode number of files
 * `--color` : Display files with colors by type
-* `--` : End of options
+
 
 **Combined options:**
 
