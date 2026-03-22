@@ -1,5 +1,3 @@
----
-
 # Day 2: LFCS - Filesystem Commands
 
 ## 1. `ls`
@@ -24,7 +22,6 @@ ls [options] <directory-path>
 * `-S` : Sort files by size (largest first)
 * `-i` : Display inode number of files
 * `--color` : Display files with colors by type
-
 
 **Combined options:**
 
@@ -124,7 +121,7 @@ touch [options] [file_name...]
 
 **Timestamp format:**
 
-```
+```text
 [[CC]YY]MMDDhhmm[.ss]
 ```
 
@@ -148,128 +145,4 @@ touch -t 202510231230.30 file.txt
 
 ---
 
-## 5. `mkdir`
-
-Create one or more directories.
-
-**Syntax:**
-
-```bash
-mkdir [OPTION] [DIRECTORY-NAME]
-```
-
-**Options:**
-
-* `-p` : Create parent directories as needed; ignore existing
-* `-m` : Set specific directory permissions
-* `-v` : Show message for each directory created
-* `-Z` : Set SELinux security context
-
-**Examples:**
-
-```bash
-mkdir myfolder
-mkdir dir1 dir2 dir3
-mkdir -p parent/child/grandchild
-mkdir -v dir1
-mkdir -m 755 mydir
-```
-
-*Note:* `mv` cannot move across filesystems without physically copying and deleting.
-
----
-
-## 6. `cp`
-
-Copy files and directories.
-
-**Syntax:**
-
-```bash
-cp [options] <source> <destination>
-```
-
-**Options:**
-
-* `-r` : Recursive
-* `-i` : Prompt before overwriting
-* `-p` : Preserve attributes (permissions, ownership, timestamps)
-* `-a` : Archive (full copy)
-* `-v` : Show each file as copied
-* `-n` : Do not overwrite existing files
-* `-u` : Copy if source is newer or destination missing
-* `-f` : Overwrite without asking
-
-**Examples:**
-
-```bash
-cp file1.txt file2.txt
-cp file1.txt /tmp/
-cp file1 file2 file3 /tmp/
-cp -r dir1 dir2
-cp -p file1 /tmp/
-```
-
----
-
-## 7. `mv`
-
-Move or rename files/directories.
-
-**Syntax:**
-
-```bash
-mv [options] <source> <destination>
-```
-
-**Options:**
-
-* `-i` : Prompt before overwriting
-* `-f` : Overwrite without prompting
-* `-n` : Do not overwrite existing files
-* `-u` : Move if source is newer or destination missing
-* `-v` : Show each file moved
-* `-b` : Backup destination before overwriting
-
-**Examples:**
-
-```bash
-mv -i file1 file2
-mv -f file1 file2
-mv -v file1 /tmp/
-```
-
----
-
-## 8. `rm`
-
-Delete files or directories permanently.
-
-**Syntax:**
-
-```bash
-rm [options] <file/directory>
-```
-
-**Options:**
-
-* `-i` : Prompt before every deletion
-* `-I` : Prompt once for >3 files or recursive deletion
-* `-r` : Delete directories recursively
-* `-f` : Force deletion, ignore non-existent files
-* `-v` : Show each file as removed
-* `-d` : Remove empty directories (like `rmdir`)
-
-**Examples:**
-
-```bash
-rm file1.txt
-rm file1 file2 file3
-rm -r dir1
-```
-
-*Note:* `rm` is permanent (not like a Recycle Bin).
-
----
-
-Do you want me to generate the actual file for download?
+Do you want me to do that?
