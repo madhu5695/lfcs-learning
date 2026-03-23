@@ -380,5 +380,3 @@ chmod 1755 /tmp
 | Sticky Bit  | 1             | Sticky Bit (used mostly on directories) |
 
 ```
-
----
