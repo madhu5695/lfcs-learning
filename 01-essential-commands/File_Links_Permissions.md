@@ -379,4 +379,3 @@ chmod 1755 /tmp
 | SGID        | 2             | Set Group ID                            |
 | Sticky Bit  | 1             | Sticky Bit (used mostly on directories) |
 
-```
