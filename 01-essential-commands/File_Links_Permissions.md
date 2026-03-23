@@ -1,4 +1,3 @@
-````markdown
 # LFCS Day 3: File Links, Permissions, and Special Bits
 
 ## 1. Hard Links
