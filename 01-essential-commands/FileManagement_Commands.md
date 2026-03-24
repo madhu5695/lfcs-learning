@@ -281,10 +281,17 @@ sed [options] '<command>' <filename>
 ```
 
 **Options:**
-
-* `-n` : Suppress automatic printing of lines
-* `-i` : Edit file in-place
-* `-e` : Multiple commands
+| Option      | Purpose                 |
+| ----------- | ----------------------- |
+| `-n`        | Suppress default output |
+| `-i`        | Edit file in place      |
+| `-e`        | Multiple commands       |
+| `-f`        | Load commands from file |
+| `-E` / `-r` | Extended regex          |
+| `-u`        | Unbuffered output       |
+| `-s`        | Separate files          |
+| `-z`        | Null-separated input    |
+| `-l`        | Line wrap control       |
 
 **Examples:**
 
